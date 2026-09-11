@@ -7,5 +7,5 @@
   "href": "index.html",
   "readme": "README.md",
   "launchLabel": "Open Madame Claude",
-  "pitch": ""
+  "pitch": "An agentic fortune teller (bring your own Anthropic API Key)"
 }
