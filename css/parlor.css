@@ -17,6 +17,16 @@ body {
   display: flex; flex-direction: column; gap: 1.75rem;
 }
 .parlor__header { text-align: center; }
+.parlor__home {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+}
+.parlor__home a {
+  color: var(--ink-dim);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+.parlor__home a:hover, .parlor__home a:focus-visible { color: var(--gold); }
 .parlor__eyebrow {
   margin: 0; color: var(--ink-dim);
   font-size: 0.8rem; letter-spacing: 0.3em; text-transform: uppercase;
