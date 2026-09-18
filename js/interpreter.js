@@ -45,14 +45,16 @@ export function interpret({ spread, dealt, templates, rng }) {
     const byRole = templates.position[d.position.role] || {};
     const pool = byRole[orient] || templates.position.default[orient];
     const keywords = d.card.keywords[orient];
-    paragraphs.push(fill(pick(pool), {
-      position: d.position.label,
-      card: d.card.name,
-      kw1: keywords[0],
-      kw2: keywords[1] || keywords[0],
-      kw3: keywords[2] || keywords[0],
-      meaning: d.card.meaning[orient],
-    }));
+    paragraphs.push(
+      fill(pick(pool), {
+        position: d.position.label,
+        card: d.card.name,
+        kw1: keywords[0],
+        kw2: keywords[1] || keywords[0],
+        kw3: keywords[2] || keywords[0],
+        meaning: d.card.meaning[orient],
+      })
+    );
   });
 
   paragraphs.push(pick(templates.closing));

@@ -34,7 +34,7 @@ The game is designed to be:
    - A freeform text area invites the player to share a question, a worry, a
      name, a birthdate, or nothing at all.
    - Placeholder text suggests prompts:
-     *"What weighs on your mind? A question, a name, a date… or silence."*
+     _"What weighs on your mind? A question, a name, a date… or silence."_
    - A collapsible "Settings" panel offers:
      - Spread type (single card, three-card past/present/future, Celtic Cross).
      - Seed override (text field; leave blank for the default).
@@ -45,7 +45,7 @@ The game is designed to be:
 
 3. **Shuffle**
    - The deck animates a shuffle.
-   - A seed is derived (see *Seeding*), fed to a PRNG, and the 78-card deck is
+   - A seed is derived (see _Seeding_), fed to a PRNG, and the 78-card deck is
      shuffled with Fisher–Yates.
    - Cards are dealt face-down into the chosen spread layout.
 
@@ -148,7 +148,7 @@ playable with the built-in interpreter.
   key; the UI states this clearly next to the key field.
 - Errors (invalid key, rate limit, network) fall back gracefully to the
   built-in interpreter with a gentle in-character message
-  (*"The spirits are quiet tonight… let me read the cards myself."*).
+  (_"The spirits are quiet tonight… let me read the cards myself."_).
 
 ---
 
@@ -190,12 +190,12 @@ A single `cards.json` describes all 78 cards:
 
 Defined in `spreads.js` as data:
 
-| Spread        | Cards | Positions                                              |
-|---------------|-------|--------------------------------------------------------|
-| Single        | 1     | The Answer                                             |
-| Three Card    | 3     | Past, Present, Future                                  |
-| Celtic Cross  | 10    | Situation, Challenge, Root, Past, Crown, Near Future,   |
-|               |       | Self, Environment, Hopes/Fears, Outcome                |
+| Spread       | Cards | Positions                                             |
+| ------------ | ----- | ----------------------------------------------------- |
+| Single       | 1     | The Answer                                            |
+| Three Card   | 3     | Past, Present, Future                                 |
+| Celtic Cross | 10    | Situation, Challenge, Root, Past, Crown, Near Future, |
+|              |       | Self, Environment, Hopes/Fears, Outcome               |
 
 Each spread specifies card count, position labels, a short description of each
 position, and layout coordinates (grid cell or percentage offsets) for the UI.

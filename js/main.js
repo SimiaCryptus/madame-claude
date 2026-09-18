@@ -1,7 +1,13 @@
 import { loadCards, shuffle, deal } from './deck.js';
 import { getSpread } from './spreads.js';
 import {
-  getLocation, localDate, buildDefaultSeed, seedToHash, hashToShareSeed, rngFromHash, deriveRng,
+  getLocation,
+  localDate,
+  buildDefaultSeed,
+  seedToHash,
+  hashToShareSeed,
+  rngFromHash,
+  deriveRng,
 } from './seed.js';
 import { interpret } from './interpreter.js';
 import { streamReading, describeError } from './anthropic.js';
@@ -34,7 +40,8 @@ try {
     }),
   ]);
 } catch (err) {
-  els.greeting.textContent = 'The parlor is dark tonight — the cards could not be found. (Serve this folder over HTTP.)';
+  els.greeting.textContent =
+    'The parlor is dark tonight — the cards could not be found. (Serve this folder over HTTP.)';
   throw err;
 }
 
@@ -126,7 +133,9 @@ async function produceReading({ spread, dealt, hash, state, date, shareUrl }) {
     const text = await streamReading({
       apiKey: state.apiKey,
       model: state.model,
-      spread, dealt, date,
+      spread,
+      dealt,
+      date,
       input: state.input,
       signal,
       onChunk: (chunk) => reading.append(chunk),

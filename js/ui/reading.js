@@ -1,7 +1,10 @@
 function wrapLines(ctx, text, maxWidth) {
   const out = [];
   for (const paragraph of text.split('\n')) {
-    if (!paragraph.trim()) { out.push(''); continue; }
+    if (!paragraph.trim()) {
+      out.push('');
+      continue;
+    }
     let line = '';
     for (const word of paragraph.split(/\s+/)) {
       const test = line ? `${line} ${word}` : word;
@@ -18,7 +21,9 @@ function wrapLines(ctx, text, maxWidth) {
 }
 
 function saveAsImage(title, text) {
-  const W = 960, pad = 64, lineH = 32;
+  const W = 960,
+    pad = 64,
+    lineH = 32;
   const measure = document.createElement('canvas').getContext('2d');
   measure.font = '21px Georgia, "Times New Roman", serif';
   const lines = wrapLines(measure, text, W - pad * 2);
@@ -54,7 +59,16 @@ function saveAsImage(title, text) {
   a.click();
 }
 
-export function initReading({ panel, titleEl, noteEl, textEl, copyBtn, shareBtn, saveBtn, feedbackEl }) {
+export function initReading({
+  panel,
+  titleEl,
+  noteEl,
+  textEl,
+  copyBtn,
+  shareBtn,
+  saveBtn,
+  feedbackEl,
+}) {
   let shareUrl = '';
   let title = 'Your reading';
   let feedbackTimer;
@@ -63,7 +77,9 @@ export function initReading({ panel, titleEl, noteEl, textEl, copyBtn, shareBtn,
   const feedback = (msg) => {
     feedbackEl.textContent = msg;
     clearTimeout(feedbackTimer);
-    feedbackTimer = setTimeout(() => { feedbackEl.textContent = ''; }, 4000);
+    feedbackTimer = setTimeout(() => {
+      feedbackEl.textContent = '';
+    }, 4000);
   };
 
   copyBtn.addEventListener('click', async () => {

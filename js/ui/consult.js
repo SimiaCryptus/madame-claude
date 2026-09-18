@@ -63,7 +63,9 @@ export function initConsult({ form, onConsult }) {
       f.input.focus({ preventScroll: false });
     },
     submit() {
-      form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event('submit', { cancelable: true }));
+      form.requestSubmit
+        ? form.requestSubmit()
+        : form.dispatchEvent(new Event('submit', { cancelable: true }));
     },
   };
 }

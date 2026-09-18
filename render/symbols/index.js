@@ -30,37 +30,65 @@ const rays = (n, r1, r2, w = 0.05) =>
   }).join('');
 
 const figureRobe = 'M -0.28 0.5 L -0.2 -0.18 Q 0 -0.32 0.2 -0.18 L 0.28 0.5 Q 0 0.44 -0.28 0.5 Z';
-const wingPath = 'M 0 0.05 C -0.15 -0.35 -0.42 -0.42 -0.5 -0.15 C -0.35 -0.17 -0.28 -0.05 -0.4 0.12 C -0.27 0.06 -0.16 0.12 -0.05 0.22 Z';
+const wingPath =
+  'M 0 0.05 C -0.15 -0.35 -0.42 -0.42 -0.5 -0.15 C -0.35 -0.17 -0.28 -0.05 -0.4 0.12 C -0.27 0.06 -0.16 0.12 -0.05 0.22 Z';
 
 export const SYMBOLS = {
   star: () => `<polygon points="${poly(starPoints(0.5, 0.2))}"/>`,
   sun: () => `<g fill="none">${rays(12, 0.36, 0.5)}</g><circle r="0.28"/>`,
-  moon: () => `<path transform="translate(0.08 0)" d="M 0.2 -0.42 A 0.44 0.44 0 1 0 0.2 0.42 A 0.6 0.6 0 0 1 0.2 -0.42 Z"/>`,
+  moon: () =>
+    `<path transform="translate(0.08 0)" d="M 0.2 -0.42 A 0.44 0.44 0 1 0 0.2 0.42 A 0.6 0.6 0 0 1 0.2 -0.42 Z"/>`,
   tower: () => `
     <rect x="-0.18" y="-0.28" width="0.36" height="0.78"/>
     <rect x="-0.18" y="-0.37" width="0.08" height="0.1"/><rect x="-0.04" y="-0.37" width="0.08" height="0.1"/><rect x="0.10" y="-0.37" width="0.08" height="0.1"/>
     <rect x="-0.05" y="-0.12" width="0.1" height="0.14" fill="currentLine"/><rect x="-0.07" y="0.32" width="0.14" height="0.18" fill="currentLine"/>`,
-  lightning: () => `<polygon points="${poly([[0.1, -0.5], [-0.2, 0.02], [0, 0.02], [-0.12, 0.5], [0.22, -0.08], [0.03, -0.08], [0.16, -0.5]])}"/>`,
+  lightning: () =>
+    `<polygon points="${poly([
+      [0.1, -0.5],
+      [-0.2, 0.02],
+      [0, 0.02],
+      [-0.12, 0.5],
+      [0.22, -0.08],
+      [0.03, -0.08],
+      [0.16, -0.5],
+    ])}"/>`,
   cup: () => `
     <path d="M -0.3 -0.3 L -0.3 -0.16 Q -0.3 0.14 0 0.14 Q 0.3 0.14 0.3 -0.16 L 0.3 -0.3 Z"/>
     <ellipse cx="0" cy="-0.3" rx="0.3" ry="0.06"/>
     <rect x="-0.04" y="0.14" width="0.08" height="0.2"/>
     <path d="M -0.22 0.42 Q 0 0.28 0.22 0.42 Q 0 0.5 -0.22 0.42 Z"/>`,
   sword: () => `
-    <polygon points="${poly([[0, -0.5], [0.06, -0.4], [0.06, 0.15], [-0.06, 0.15], [-0.06, -0.4]])}"/>
+    <polygon points="${poly([
+      [0, -0.5],
+      [0.06, -0.4],
+      [0.06, 0.15],
+      [-0.06, 0.15],
+      [-0.06, -0.4],
+    ])}"/>
     <rect x="-0.22" y="0.13" width="0.44" height="0.06" fill="currentLine"/>
     <rect x="-0.035" y="0.19" width="0.07" height="0.22" fill="currentLine"/>
     <circle cy="0.45" r="0.06"/>`,
   wand: () => `
     <line x1="-0.12" y1="0.48" x2="0.12" y2="-0.48" stroke-width="0.08" fill="none"/>
     <circle cx="0.12" cy="-0.48" r="0.05"/><circle cx="0.06" cy="-0.28" r="0.045"/><circle cx="0.0" cy="-0.08" r="0.04"/>`,
-  pentacle: () => `<circle r="0.46"/><polygon points="${poly(pentagramPoints(0.36))}" fill="none"/>`,
+  pentacle: () =>
+    `<circle r="0.46"/><polygon points="${poly(pentagramPoints(0.36))}" fill="none"/>`,
   figure: () => `<circle cy="-0.37" r="0.11"/><path d="${figureRobe}"/>`,
   crown: () => `
-    <polygon points="${poly([[-0.45, 0.3], [-0.45, -0.15], [-0.22, 0.05], [0, -0.35], [0.22, 0.05], [0.45, -0.15], [0.45, 0.3]])}"/>
+    <polygon points="${poly([
+      [-0.45, 0.3],
+      [-0.45, -0.15],
+      [-0.22, 0.05],
+      [0, -0.35],
+      [0.22, 0.05],
+      [0.45, -0.15],
+      [0.45, 0.3],
+    ])}"/>
     <circle cx="-0.45" cy="-0.15" r="0.05"/><circle cy="-0.35" r="0.05"/><circle cx="0.45" cy="-0.15" r="0.05"/>`,
-  wheel: () => `<circle r="0.46"/><g fill="none">${rays(8, 0.1, 0.46, 0.035)}</g><circle r="0.09" fill="currentLine"/>`,
-  heart: () => `<path d="M 0 0.42 C -0.5 0.05 -0.5 -0.35 -0.25 -0.35 C -0.1 -0.35 0 -0.25 0 -0.15 C 0 -0.25 0.1 -0.35 0.25 -0.35 C 0.5 -0.35 0.5 0.05 0 0.42 Z"/>`,
+  wheel: () =>
+    `<circle r="0.46"/><g fill="none">${rays(8, 0.1, 0.46, 0.035)}</g><circle r="0.09" fill="currentLine"/>`,
+  heart: () =>
+    `<path d="M 0 0.42 C -0.5 0.05 -0.5 -0.35 -0.25 -0.35 C -0.1 -0.35 0 -0.25 0 -0.15 C 0 -0.25 0.1 -0.35 0.25 -0.35 C 0.5 -0.35 0.5 0.05 0 0.42 Z"/>`,
   key: () => `
     <circle cy="-0.3" r="0.16" fill="none" stroke-width="0.07"/>
     <line x1="0" y1="-0.14" x2="0" y2="0.45" stroke-width="0.07"/>
@@ -77,9 +105,21 @@ export const SYMBOLS = {
       <path d="M -0.5 0.14 Q -0.375 -0.06 -0.25 0.14 T 0 0.14 T 0.25 0.14 T 0.5 0.14"/>
     </g>`,
   mountain: () => `
-    <polygon points="${poly([[-0.5, 0.4], [-0.15, -0.38], [0.2, 0.4]])}"/>
-    <polygon points="${poly([[-0.05, 0.4], [0.25, -0.15], [0.5, 0.4]])}"/>
-    <polygon points="${poly([[-0.15, -0.38], [-0.24, -0.18], [-0.06, -0.18]])}" stroke="none"/>`,
+    <polygon points="${poly([
+      [-0.5, 0.4],
+      [-0.15, -0.38],
+      [0.2, 0.4],
+    ])}"/>
+    <polygon points="${poly([
+      [-0.05, 0.4],
+      [0.25, -0.15],
+      [0.5, 0.4],
+    ])}"/>
+    <polygon points="${poly([
+      [-0.15, -0.38],
+      [-0.24, -0.18],
+      [-0.06, -0.18],
+    ])}" stroke="none"/>`,
   scales: () => `
     <g fill="none">
       <line x1="0" y1="-0.45" x2="0" y2="0.42"/><line x1="-0.4" y1="-0.3" x2="0.4" y2="-0.3"/>
@@ -90,16 +130,32 @@ export const SYMBOLS = {
     <rect x="-0.18" y="0.42" width="0.36" height="0.06"/>`,
   lantern: () => `
     <path d="M -0.1 -0.4 Q 0 -0.62 0.1 -0.4" fill="none"/>
-    <polygon points="${poly([[-0.2, -0.3], [0.2, -0.3], [0.14, -0.4], [-0.14, -0.4]])}"/>
+    <polygon points="${poly([
+      [-0.2, -0.3],
+      [0.2, -0.3],
+      [0.14, -0.4],
+      [-0.14, -0.4],
+    ])}"/>
     <rect x="-0.18" y="-0.3" width="0.36" height="0.6"/>
     <circle r="0.1" fill="currentLine"/>
     <rect x="-0.22" y="0.3" width="0.44" height="0.06"/>`,
   wings: () => `<path d="${wingPath}"/><path d="${wingPath}" transform="scale(-1 1)"/>`,
-  infinity: () => `<path fill="none" stroke-width="0.06" d="M 0 0 C 0.15 -0.3 0.45 -0.3 0.45 0 C 0.45 0.3 0.15 0.3 0 0 C -0.15 -0.3 -0.45 -0.3 -0.45 0 C -0.45 0.3 -0.15 0.3 0 0 Z"/>`,
+  infinity: () =>
+    `<path fill="none" stroke-width="0.06" d="M 0 0 C 0.15 -0.3 0.45 -0.3 0.45 0 C 0.45 0.3 0.15 0.3 0 0 C -0.15 -0.3 -0.45 -0.3 -0.45 0 C -0.45 0.3 -0.15 0.3 0 0 Z"/>`,
   flower: () => `
     ${[0, 60, 120, 180, 240, 300].map((deg) => `<ellipse cx="0" cy="-0.3" rx="0.12" ry="0.2" transform="rotate(${deg})"/>`).join('')}
     <circle r="0.11" fill="currentLine"/>`,
-  cliff: () => `<polygon points="${poly([[-0.5, 0.5], [-0.5, -0.1], [-0.3, -0.16], [-0.1, -0.05], [0.1, -0.12], [0.2, 0.08], [0.35, 0.14], [0.5, 0.5]])}"/>`,
+  cliff: () =>
+    `<polygon points="${poly([
+      [-0.5, 0.5],
+      [-0.5, -0.1],
+      [-0.3, -0.16],
+      [-0.1, -0.05],
+      [0.1, -0.12],
+      [0.2, 0.08],
+      [0.35, 0.14],
+      [0.5, 0.5],
+    ])}"/>`,
   pillar: () => `
     <rect x="-0.22" y="-0.5" width="0.44" height="0.08"/>
     <rect x="-0.14" y="-0.42" width="0.28" height="0.84"/>
@@ -107,11 +163,17 @@ export const SYMBOLS = {
   scythe: () => `
     <line x1="-0.1" y1="0.5" x2="0.15" y2="-0.3" stroke-width="0.06"/>
     <path d="M 0.15 -0.3 Q -0.3 -0.5 -0.45 -0.05 Q -0.15 -0.32 0.15 -0.22 Z"/>`,
-  cross: () => `<rect x="-0.07" y="-0.5" width="0.14" height="1"/><rect x="-0.35" y="-0.22" width="0.7" height="0.14"/>`,
+  cross: () =>
+    `<rect x="-0.07" y="-0.5" width="0.14" height="1"/><rect x="-0.35" y="-0.22" width="0.7" height="0.14"/>`,
   wreath: () => `
     <circle r="0.4" fill="none" stroke-width="0.02"/>
     ${Array.from({ length: 14 }, (_, i) => `<ellipse cx="0" cy="-0.4" rx="0.06" ry="0.12" transform="rotate(${(i * 360) / 14})"/>`).join('')}`,
-  sigil: () => `<circle r="0.42" fill="none"/><polygon points="${poly([[0, -0.32], [0.28, 0.18], [-0.28, 0.18]])}"/><circle r="0.06" fill="currentLine"/>`,
+  sigil: () =>
+    `<circle r="0.42" fill="none"/><polygon points="${poly([
+      [0, -0.32],
+      [0.28, 0.18],
+      [-0.28, 0.18],
+    ])}"/><circle r="0.06" fill="currentLine"/>`,
 };
 
 export const SYMBOL_NAMES = Object.keys(SYMBOLS);
@@ -122,8 +184,6 @@ export const SYMBOL_NAMES = Object.keys(SYMBOLS);
  */
 export function drawSymbol(name, cx, cy, s, c, opacity = 1) {
   const fn = SYMBOLS[name] || SYMBOLS.sigil;
-  const body = fn(c)
-    .replaceAll('currentLine', c.line)
-    .replaceAll('currentBg', c.bg);
+  const body = fn(c).replaceAll('currentLine', c.line).replaceAll('currentBg', c.bg);
   return `<g transform="translate(${f(cx)} ${f(cy)}) scale(${f(s)})" fill="${c.fill}" stroke="${c.line}" stroke-width="0.035" stroke-linejoin="round" stroke-linecap="round" opacity="${opacity}">${body}</g>`;
 }

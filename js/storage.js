@@ -6,7 +6,11 @@ const REMEMBER = 'madame-claude:remember';
 const MODEL = 'madame-claude:model';
 
 function safe(fn, fallback = null) {
-  try { return fn(); } catch { return fallback; }
+  try {
+    return fn();
+  } catch {
+    return fallback;
+  }
 }
 
 export function loadApiKey() {

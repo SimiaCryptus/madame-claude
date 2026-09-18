@@ -15,7 +15,10 @@ export function renderSpread({ container, statusEl, spread, dealt, onReveal, onA
   container.innerHTML = '';
   container.className = `spread spread--${spread.id}`;
   container.hidden = false;
-  container.setAttribute('aria-label', `${spread.name} spread: ${dealt.length} card${dealt.length > 1 ? 's' : ''} face down`);
+  container.setAttribute(
+    'aria-label',
+    `${spread.name} spread: ${dealt.length} card${dealt.length > 1 ? 's' : ''} face down`
+  );
 
   let revealedCount = 0;
   const slots = [];
@@ -67,7 +70,7 @@ export function renderSpread({ container, statusEl, spread, dealt, onReveal, onA
     caption.append(
       el('strong', 'card__name', d.card.name),
       el('em', 'card__orient', orient),
-      el('span', 'card__keywords', d.card.keywords[orient].join(' · ')),
+      el('span', 'card__keywords', d.card.keywords[orient].join(' · '))
     );
 
     const entry = { d, slot, btn };

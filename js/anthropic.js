@@ -54,7 +54,15 @@ export function describeError(err) {
  * the full text. Throws AnthropicError / network errors on failure.
  */
 export async function streamReading({
-  apiKey, model = DEFAULT_MODEL, spread, dealt, input, date, onChunk, signal, maxTokens = 1024,
+  apiKey,
+  model = DEFAULT_MODEL,
+  spread,
+  dealt,
+  input,
+  date,
+  onChunk,
+  signal,
+  maxTokens = 1024,
 }) {
   const res = await fetch(ENDPOINT, {
     method: 'POST',
@@ -76,7 +84,11 @@ export async function streamReading({
 
   if (!res.ok) {
     let detail = '';
-    try { detail = (await res.json())?.error?.message || ''; } catch { /* ignore */ }
+    try {
+      detail = (await res.json())?.error?.message || '';
+    } catch {
+      /* ignore */
+    }
     throw new AnthropicError(res.status, detail);
   }
 
@@ -91,7 +103,11 @@ export async function streamReading({
       const json = line.slice(5).trim();
       if (!json) continue;
       let payload;
-      try { payload = JSON.parse(json); } catch { continue; }
+      try {
+        payload = JSON.parse(json);
+      } catch {
+        continue;
+      }
       if (payload.type === 'content_block_delta' && payload.delta?.type === 'text_delta') {
         full += payload.delta.text;
         onChunk?.(payload.delta.text);

@@ -36,7 +36,7 @@ typed — and uses it to shuffle a deck in a perfectly reproducible way.
 That means:
 
 - Ask again later today, with the same words, and you'll get the very same
-  cards. It's not random chance each time — it's *your* reading for *today*.
+  cards. It's not random chance each time — it's _your_ reading for _today_.
 - Change your question, or wait for tomorrow, and the cards shuffle anew.
 - If you want to share a specific reading with a friend, you can send them
   a link that reproduces your exact spread — without ever sharing your
@@ -51,7 +51,7 @@ it is.
 Madame Claude sits at a small but delightful intersection of ideas:
 
 - **Determinism dressed as fate.** Ordinary randomness feels arbitrary;
-  seeded randomness tied to your date and words feels *intentional*, even
+  seeded randomness tied to your date and words feels _intentional_, even
   though it's just arithmetic. It's a neat trick for turning "random" into
   "meant to be."
 - **A little bit of theater.** The cards are hand-designed with a

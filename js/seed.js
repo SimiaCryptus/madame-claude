@@ -99,13 +99,14 @@ export function getLocation({ timeout = 4000 } = {}) {
     const timer = setTimeout(() => finish(fallback), timeout);
     try {
       navigator.geolocation.getCurrentPosition(
-        (pos) => finish(() => {
-          const lat = (Math.round(pos.coords.latitude * 10) / 10).toFixed(1);
-          const lon = (Math.round(pos.coords.longitude * 10) / 10).toFixed(1);
-          resolve(`${lat},${lon}`);
-        }),
+        (pos) =>
+          finish(() => {
+            const lat = (Math.round(pos.coords.latitude * 10) / 10).toFixed(1);
+            const lon = (Math.round(pos.coords.longitude * 10) / 10).toFixed(1);
+            resolve(`${lat},${lon}`);
+          }),
         () => finish(fallback),
-        { enableHighAccuracy: false, maximumAge: 3600000, timeout },
+        { enableHighAccuracy: false, maximumAge: 3600000, timeout }
       );
     } catch {
       finish(fallback);

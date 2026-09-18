@@ -36,7 +36,12 @@ const manifestPath = path.join(opts.out, '.render-manifest.json');
 const manifest = existsSync(manifestPath) ? JSON.parse(await readFile(manifestPath, 'utf8')) : {};
 
 const only = opts.only
-  ? new Set(opts.only.split(',').map((s) => s.trim()).map((s) => (s === 'back' ? 'card-back' : s)))
+  ? new Set(
+      opts.only
+        .split(',')
+        .map((s) => s.trim())
+        .map((s) => (s === 'back' ? 'card-back' : s))
+    )
   : null;
 
 const jobs = [

@@ -41,7 +41,13 @@ function halo(cx, cy, r, accent, light) {
     <circle cx="${cx}" cy="${cy}" r="${r - 12}" fill="none" stroke="${withAlpha(accent, 0.2)}" stroke-width="1"/>`;
 }
 
-const EXTRA_SLOTS = [[135, 205], [365, 205], [135, 640], [365, 640], [250, 165]];
+const EXTRA_SLOTS = [
+  [135, 205],
+  [365, 205],
+  [135, 640],
+  [365, 640],
+  [250, 165],
+];
 const jitter = (rng, amt) => (rng() - 0.5) * 2 * amt;
 
 function majorScene(card, c, rng) {
@@ -50,7 +56,9 @@ function majorScene(card, c, rng) {
   parts.push(drawSymbol(main, 250, 430, 250, c));
   extras.slice(0, EXTRA_SLOTS.length).forEach((name, i) => {
     const [x, y] = EXTRA_SLOTS[i];
-    parts.push(drawSymbol(name, x + jitter(rng, 8), y + jitter(rng, 8), 82 + jitter(rng, 8), c, 0.9));
+    parts.push(
+      drawSymbol(name, x + jitter(rng, 8), y + jitter(rng, 8), 82 + jitter(rng, 8), c, 0.9)
+    );
   });
   return parts.join('');
 }
@@ -59,7 +67,8 @@ function pipPositions(n) {
   if (n === 1) return [[250, 430, 230]];
   const cols = n <= 3 ? 1 : n <= 8 ? 2 : 3;
   const rows = Math.ceil(n / cols);
-  const top = 200, bottom = 665;
+  const top = 200,
+    bottom = 665;
   const rowGap = rows > 1 ? (bottom - top) / (rows - 1) : 0;
   const colX = { 1: [250], 2: [165, 335], 3: [130, 250, 370] };
   const size = Math.min(cols === 1 ? 165 : cols === 2 ? 118 : 96, rowGap ? rowGap * 0.82 : 200);
@@ -83,7 +92,13 @@ function pipScene(card, c, rng) {
     parts.push(drawSymbol(glyph, x + jitter(rng, 3), y + jitter(rng, 3), s, c));
   }
   const extras = card.art.symbols.slice(0, 2);
-  const spots = extras.length === 1 ? [[250, 140]] : [[110, 150], [390, 150]];
+  const spots =
+    extras.length === 1
+      ? [[250, 140]]
+      : [
+          [110, 150],
+          [390, 150],
+        ];
   extras.forEach((name, i) => parts.push(drawSymbol(name, spots[i][0], spots[i][1], 50, c, 0.75)));
   return parts.join('');
 }
@@ -94,11 +109,17 @@ function courtScene(card, c, rng) {
   const parts = [halo(250, 430, 185, c.line, c.fill)];
   if (rank === 12) parts.push(drawSymbol('wings', 250, 400, 330, c, 0.55));
   parts.push(drawSymbol('figure', 250, 440, 250, c));
-  if (rank >= 13) parts.push(drawSymbol('crown', 250, 300 - (rank - 13) * 8, rank === 14 ? 92 : 72, c));
+  if (rank >= 13)
+    parts.push(drawSymbol('crown', 250, 300 - (rank - 13) * 8, rank === 14 ? 92 : 72, c));
   parts.push(drawSymbol(glyph, 352, 470, 96, c));
-  const spots = [[125, 215], [375, 215]];
+  const spots = [
+    [125, 215],
+    [375, 215],
+  ];
   card.art.symbols.slice(0, 2).forEach((name, i) => {
-    parts.push(drawSymbol(name, spots[i][0] + jitter(rng, 6), spots[i][1] + jitter(rng, 6), 70, c, 0.85));
+    parts.push(
+      drawSymbol(name, spots[i][0] + jitter(rng, 6), spots[i][1] + jitter(rng, 6), 70, c, 0.85)
+    );
   });
   return parts.join('');
 }
@@ -107,9 +128,12 @@ export function composeCard(card) {
   const rng = mulberry32(cyrb53(card.id) >>> 0);
   const [bg, accent, light] = card.art.palette;
   const colors = { line: accent, fill: light, bg };
-  const scene = card.arcana === 'major'
-    ? majorScene(card, colors, rng)
-    : card.number <= 10 ? pipScene(card, colors, rng) : courtScene(card, colors, rng);
+  const scene =
+    card.arcana === 'major'
+      ? majorScene(card, colors, rng)
+      : card.number <= 10
+        ? pipScene(card, colors, rng)
+        : courtScene(card, colors, rng);
   return svgDoc([background(bg, accent, light, rng), scene, frame(card)].join('\n'));
 }
 
@@ -121,8 +145,8 @@ export function composeBack() {
     <defs>
       <pattern id="lattice" width="44" height="44" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
         <rect width="44" height="44" fill="${bg}"/>
-        <rect x="0" y="0" width="22" height="22" fill="${withAlpha(GOLD, 0.10)}"/>
-        <rect x="22" y="22" width="22" height="22" fill="${withAlpha(GOLD, 0.10)}"/>
+        <rect x="0" y="0" width="22" height="22" fill="${withAlpha(GOLD, 0.1)}"/>
+        <rect x="22" y="22" width="22" height="22" fill="${withAlpha(GOLD, 0.1)}"/>
         <circle cx="22" cy="22" r="2" fill="${withAlpha(GOLD, 0.45)}"/>
       </pattern>
     </defs>

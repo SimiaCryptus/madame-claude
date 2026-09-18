@@ -12,9 +12,7 @@
       "Ten cards, laid in the old cross. It is a long story, and I will tell it slowly.",
       "The Celtic Cross does not hurry, and neither shall we. Let us begin at the centre."
     ],
-    "default": [
-      "The cards are turned. Let us listen to what they say."
-    ]
+    "default": ["The cards are turned. Let us listen to what they say."]
   },
   "position": {
     "default": {
